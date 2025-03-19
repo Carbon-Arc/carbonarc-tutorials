@@ -31,16 +31,16 @@ API_AUTH_TOKEN=os.getenv("API_AUTH_TOKEN", None)
 api_client = APIClient(API_AUTH_TOKEN)
 ```
 
-Explore Insights
+Explore Ontology
 
 
 ```python
-# Get a insight data identifier
-data_id = api_client.get_insight_data_identifiers(page=1, page_size=1)["data"][0]["data_identifier"]
+# Get ontology representations
+entity_representations = api_client.get_ontology_entity_representations()
 ```
 
 
 ```python
-# Get insight metadata
-metadata = api_client.get_insight_metadata(data_id)
+# Get ontology entities
+entities = api_client.get_ontology_entities()
 ```

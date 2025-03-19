@@ -1,7 +1,6 @@
 # Bulk Data Tutorials
 
 ## Prerequisites
-- Python 3.x
 - `carbonarc` library
 
 ## Setup
@@ -51,7 +50,7 @@ for data_id, data in DATA_IDENTIFIERS.items():
      
     # Get data manifest, this will contain all the files that can be downloaded
     # You can track the downloaded files to maintain ingestion state
-    manifest = api_client.get_alldata_data_manifest(data_id)
+    manifest = api_client.get_alldata_manifest(data_id)
     print(f"Data id: {data_id}, total files: {len(manifest['files'])}")
     # print(f"Manifest: {manifest}")
     
@@ -64,7 +63,7 @@ for data_id, data in DATA_IDENTIFIERS.items():
         # api_client.download_alldata_file(file["url"], outputdir)
         
         # Download the file to S3
-        api_client.download_alldata_data_file(
+        api_client.download_alldata_to_file(
             file["url"],
             "."
         )

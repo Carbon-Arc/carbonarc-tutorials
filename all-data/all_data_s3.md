@@ -1,7 +1,6 @@
 # Bulk Data S3 Upload
 
 ## Prerequisites
-- Python 3.x
 - `carbonarc` library
 - `boto3` library
 
@@ -36,7 +35,7 @@ API_AUTH_TOKEN=os.getenv("API_AUTH_TOKEN", None)
 
 
 ```python
-def download_alldata_file_to_s3(
+def download_alldata_to_s3(
     file_url: str, 
     request_manager: HttpRequestManager,
     s3_bucket: str, 
@@ -214,7 +213,7 @@ for data_id, data in DATA_IDENTIFIERS.items():
      
     # Get data manifest, this will contain all the files that can be downloaded
     # You can track the downloaded files to maintain ingestion state
-    manifest = api_client.get_alldata_data_manifest(data_id)
+    manifest = api_client.get_alldata_manifest(data_id)
     print(f"Data id: {data_id}, total files: {len(manifest['files'])}")
     # print(f"Manifest: {manifest}")
     
@@ -224,10 +223,10 @@ for data_id, data in DATA_IDENTIFIERS.items():
         print(f"Downloading file {file}...")
         print(f"{file['size_bytes']/1024/1024} MB")
         # Uncomment the line below to download files locally
-        # api_client.download_alldata_file(file["url"], outputdir)
+        # api_client.download_alldata_to_file(file["url"], outputdir)
         
         # Download the file to S3
-        download_alldata_file_to_s3(
+        download_alldata_to_s3(
             file["url"],
             api_client.request_manager,
             s3_bucket=os.getenv("AWS_S3_BUCKET"),
