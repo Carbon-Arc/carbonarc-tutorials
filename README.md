@@ -13,3 +13,4 @@ This directory contains the code that is explained in the Carbon Arc documentati
 This directory contains the code that is explained in the Carbon Arc documentation Bulk Data guides:
 * `all_data_simple.ipynb`: Simple Bulk Data Tutorial
 * `all_data_s3.ipynb`: Bulk Data AWS S3 Upload Tutorial
+* `all_data_local.ipynb`: Bulk Data Local Download Tutorial
