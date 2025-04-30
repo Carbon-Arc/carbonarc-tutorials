@@ -95,16 +95,6 @@ print(f"\nManifest for {data_identifier}:")
 download_manifest_files(manifest)
 ```
 
-    2025-04-30T21:38:00
-    
-    Manifest for vehicle_registration_data:
-    Downloading 4 files
-    File './data/vehicle_registration_data/drop_partition_id=1744757997/part-00000-a92189b3-b568-4068-9e04-0a34f59a3a88.parquet' exists. Skipping download.
-    File './data/vehicle_registration_data/drop_partition_id=1740512141/part-00000-b571f9bb-10c0-4716-87ce-0ea5a58e20af.parquet' exists. Skipping download.
-    File './data/vehicle_registration_data/drop_partition_id=1740512141/part-00000-d2ef64bc-680d-4378-83d6-cb146d58005e.parquet' exists. Skipping download.
-    File './data/vehicle_registration_data/drop_partition_id=1741819689/part-00000-69ef360f-356a-425d-91ad-eeddd9bba4d9.parquet' exists. Skipping download.
-
-
 
 ```python
 # Downloading files created since last ingestions, this needs last ingestion time
@@ -112,11 +102,6 @@ manifest = client.get_alldata_manifest(data_identifier, created_since=last_inges
 print(f"\nManifest for {data_identifier}:")
 download_manifest_files(manifest)
 ```
-
-    
-    Manifest for vehicle_registration_data:
-    Downloading 0 files
-
 
 
 ```python

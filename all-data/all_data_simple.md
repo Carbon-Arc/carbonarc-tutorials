@@ -49,22 +49,6 @@ for data_id in data_identifiers["data"]:
     print(data_id["data_identifier"], ": ", data_id["description"])
 ```
 
-    Data Identifiers:
-    card_us_detail_data :  Card - US Detailed Panel Row Level Data
-    pos_instore_online_data :  POS Transaction Bulk Data
-    permit_data :  Permit Row Level Data
-    medicare_claims_data :  Medicare Claims Data
-    card_us_can_general_data :  Card - US and CAN General Panel Row Level Data
-    clickstream_data :  Clickstream Data
-    trade_export_data :  Trade Export Data
-    trade_import_data :  Trade Import Data
-    card_eu_data :  Card - EU Panel Row Level Data
-    pos_cse_data :  POS Corner Store Transaction Data
-    pos_skupos_data :  POS Convenience Store Transaction Data
-    ecommerce_metrics_data :  Ecommerce Metrics Row Level Data
-    vehicle_registration_data :  Vehicle Registration Row Level Data
-
-
 
 ```python
 ## Getting all manifests files for a given data identifier
@@ -74,14 +58,6 @@ print(f"\nManifest for {data_identifier}:")
 for manifest in manifests["files"]:
     print(manifest)
 ```
-
-    
-    Manifest for vehicle_registration_data:
-    {'url': 'https://platform.carbonarc.co/api/v2/data/alldata/vehicle_registration_data/part-00000-a92189b3-b568-4068-9e04-0a34f59a3a88?drop_partition_id=1744757997', 'format': 'parquet', 'records': 4471504, 'size_bytes': 31863469, 'modification_time': '2025-04-15T23:04:44'}
-    {'url': 'https://platform.carbonarc.co/api/v2/data/alldata/vehicle_registration_data/part-00000-b571f9bb-10c0-4716-87ce-0ea5a58e20af?drop_partition_id=1740512141', 'format': 'parquet', 'records': 55103110, 'size_bytes': 533682045, 'modification_time': '2025-03-12T22:57:36'}
-    {'url': 'https://platform.carbonarc.co/api/v2/data/alldata/vehicle_registration_data/part-00000-d2ef64bc-680d-4378-83d6-cb146d58005e?drop_partition_id=1740512141', 'format': 'parquet', 'records': 49666721, 'size_bytes': 477762416, 'modification_time': '2025-03-12T22:57:06'}
-    {'url': 'https://platform.carbonarc.co/api/v2/data/alldata/vehicle_registration_data/part-00000-69ef360f-356a-425d-91ad-eeddd9bba4d9?drop_partition_id=1741819689', 'format': 'parquet', 'records': 7406839, 'size_bytes': 54818210, 'modification_time': '2025-03-12T22:54:24'}
-
 
 
 ```python
@@ -96,6 +72,3 @@ print(f"Downloading manifest file to: {output_file_path}")
 client.download_alldata_to_file(manifest_file_url, output_file_path)
 
 ```
-
-    Downloading manifest file to: ./output/alldata/vehicle_registration_data/part-00001.parquet
-
