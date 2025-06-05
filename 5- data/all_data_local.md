@@ -28,7 +28,7 @@ import os
 from dotenv import load_dotenv
 from carbonarc import APIClient
 from urllib.parse import urlparse, parse_qs
-from datetime import datetime, timezone
+from datetime import datetime
 ```
 
 
@@ -42,6 +42,7 @@ data_identifier = "vehicle_registration_data"
 
 ```python
 # Create API Client
+assert API_AUTH_TOKEN, "API_AUTH_TOKEN must be set in environment variables"
 client = APIClient(API_AUTH_TOKEN)
 ```
 
@@ -80,7 +81,7 @@ def download_manifest_files(manifest):
         # make sure local_dir exists
         os.makedirs(local_dir, exist_ok=True)
         print(f"Downloading {manifest_file_url} to: {local_path}")
-        client.download_alldata_to_file(manifest_file_url, local_path)  
+        client.data.download_alldata_to_file(manifest_file_url, local_path)  
 ```
 
 
@@ -90,7 +91,7 @@ def download_manifest_files(manifest):
 last_ingest_time = datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S')
 print(last_ingest_time)
 
-manifest = client.get_alldata_manifest(data_identifier, created_since=None)
+manifest = client.data.get_alldata_manifest(data_identifier, created_since=None)
 print(f"\nManifest for {data_identifier}:")
 download_manifest_files(manifest)
 ```
@@ -98,12 +99,7 @@ download_manifest_files(manifest)
 
 ```python
 # Downloading files created since last ingestions, this needs last ingestion time
-manifest = client.get_alldata_manifest(data_identifier, created_since=last_ingest_time)
+manifest = client.data.get_alldata_manifest(data_identifier, created_since=last_ingest_time)
 print(f"\nManifest for {data_identifier}:")
 download_manifest_files(manifest)
-```
-
-
-```python
-
 ```

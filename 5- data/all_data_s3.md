@@ -17,6 +17,8 @@ AWS_S3_BUCKET=<aws s3 bucket name>
 ```
 
 
+
+
 ```python
 # Import required dependencies
 import os
@@ -30,7 +32,8 @@ from carbonarc.manager import HttpRequestManager
 
 
 ```python
-API_AUTH_TOKEN=os.getenv("API_AUTH_TOKEN", None)
+API_AUTH_TOKEN=os.getenv("API_AUTH_TOKEN")
+S3_BUCKET=os.getenv("S3_BUCKET")
 ```
 
 
@@ -200,12 +203,14 @@ DATA_IDENTIFIERS = {
 
 ```python
 # Create API Client
+assert API_AUTH_TOKEN, "API_AUTH_TOKEN must be set in environment variables"
 api_client = APIClient(API_AUTH_TOKEN)
 ```
 
 
 ```python
 # Download data for each data identifier
+assert S3_BUCKET, "S3_BUCKET must be set in environment variables"
 for data_id, data in DATA_IDENTIFIERS.items():
     # print(f"Downloading data for {data_id}")
     params = data["filters"]
@@ -213,7 +218,7 @@ for data_id, data in DATA_IDENTIFIERS.items():
      
     # Get data manifest, this will contain all the files that can be downloaded
     # You can track the downloaded files to maintain ingestion state
-    manifest = api_client.get_alldata_manifest(data_id)
+    manifest = api_client.data.get_alldata_manifest(data_id)
     print(f"Data id: {data_id}, total files: {len(manifest['files'])}")
     # print(f"Manifest: {manifest}")
     
@@ -223,21 +228,16 @@ for data_id, data in DATA_IDENTIFIERS.items():
         print(f"Downloading file {file}...")
         print(f"{file['size_bytes']/1024/1024} MB")
         # Uncomment the line below to download files locally
-        # api_client.download_alldata_to_file(file["url"], outputdir)
+        # api_client.download_alldata_file(file["url"], outputdir)
         
         # Download the file to S3
         download_alldata_to_s3(
             file["url"],
-            api_client.request_manager,
-            s3_bucket=os.getenv("AWS_S3_BUCKET"),
+            api_client.data.request_manager,
+            s3_bucket=S3_BUCKET,
             s3_key_prefix=outputdir,
-            
+
         )
         
     print(f"Downloaded all files for {data_id}")
-```
-
-
-```python
-
 ```
