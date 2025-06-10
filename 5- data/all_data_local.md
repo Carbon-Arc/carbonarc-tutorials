@@ -103,3 +103,13 @@ manifest = client.data.get_alldata_manifest(data_identifier, created_since=last_
 print(f"\nManifest for {data_identifier}:")
 download_manifest_files(manifest)
 ```
+
+### Manifest file structure
+
+```
+{ 'url': 'link',
+'format': 'parquet',
+'records': 1000,
+'size_bytes': 123456789,
+'modification_time': '2025-04-15T23:04:44',
+'price': 123.45, }
