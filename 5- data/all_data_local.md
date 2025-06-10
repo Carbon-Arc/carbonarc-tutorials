@@ -87,10 +87,6 @@ def download_manifest_files(manifest):
 
 ```python
 # Download all history for give data identifier
-
-last_ingest_time = datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S')
-print(last_ingest_time)
-
 manifest = client.data.get_alldata_manifest(data_identifier, created_since=None)
 print(f"\nManifest for {data_identifier}:")
 download_manifest_files(manifest)
@@ -99,7 +95,11 @@ download_manifest_files(manifest)
 
 ```python
 # Downloading files created since last ingestions, this needs last ingestion time
+last_ingest_time = datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S')
+print(last_ingest_time)
+
 manifest = client.data.get_alldata_manifest(data_identifier, created_since=last_ingest_time)
+
 print(f"\nManifest for {data_identifier}:")
 download_manifest_files(manifest)
 ```
