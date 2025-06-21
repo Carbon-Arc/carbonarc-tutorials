@@ -6,11 +6,28 @@ This repository contains code to [Carbon Arc](https://github.com/Carbon-Arc/carb
 
 ### `getting-started`
 This directory contains the code that is explained in the Carbon Arc documentation Getting Started guides:
-* `introduction.ipynb`: Introduction to Carbon Arc API Client
-* `ontology.ipynb`: Navigate the ontology of Carbon Arc API Client
+* Simple setup of the Carbon Arc API Client.
 
-### `all-data`
-This directory contains the code that is explained in the Carbon Arc documentation Bulk Data guides:
-* `all_data_simple.ipynb`: Simple Bulk Data Tutorial
-* `all_data_s3.ipynb`: Bulk Data AWS S3 Upload Tutorial
-* `all_data_local.ipynb`: Bulk Data Local Download Tutorial
+### `ontology`
+This directory contains the code that is explained in the Carbon Arc documentation Ontology guides:
+* Explore the entity ontology.
+* Explore the insight ontology.
+* Explore the taxonomy ontology.
+
+### `platform`
+This directory contains the code that is explained in the Carbon Arc documentation Platform guides:
+* Explore the platform.
+
+### `framework`
+This directory contains the code that is explained in the Carbon Arc documentation Framework guides:
+
+* Explore the platform.
+* Build a simple framework.
+
+### `data`
+This directory contains the code that is explained in the Carbon Arc documentation Data guides:
+
+* Explore the data.
+* Download data from the platform.
+* Download data to Remote (S3, Azure, GCP examples).
+* Upload data to the platform.

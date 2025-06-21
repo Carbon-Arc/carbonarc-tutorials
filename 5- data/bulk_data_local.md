@@ -1,4 +1,4 @@
-# Bulk Data - Ingesting alldata for a data identifier to local filesystem
+# Bulk Data - Ingesting bulk_data for a data identifier to local filesystem
 
 This notebook walks through a tutorial to pull data for `vehicle_registration_data` identifier.
 
@@ -26,7 +26,7 @@ API_AUTH_TOKEN=<api auth token from (https://platform.carbonarc.co/profile)>
 # Import required dependencies
 import os
 from dotenv import load_dotenv
-from carbonarc import APIClient
+from carbonarc import CarbonArcClient
 from urllib.parse import urlparse, parse_qs
 from datetime import datetime
 ```
@@ -43,7 +43,7 @@ data_identifier = "vehicle_registration_data"
 ```python
 # Create API Client
 assert API_AUTH_TOKEN, "API_AUTH_TOKEN must be set in environment variables"
-client = APIClient(API_AUTH_TOKEN)
+client = CarbonArcClient(API_AUTH_TOKEN)
 ```
 
 
@@ -81,13 +81,13 @@ def download_manifest_files(manifest):
         # make sure local_dir exists
         os.makedirs(local_dir, exist_ok=True)
         print(f"Downloading {manifest_file_url} to: {local_path}")
-        client.data.download_alldata_to_file(manifest_file_url, local_path)  
+        client.data.download_bulk_data_to_file(manifest_file_url, local_path)  
 ```
 
 
 ```python
 # Download all history for give data identifier
-manifest = client.data.get_alldata_manifest(data_identifier, created_since=None)
+manifest = client.data.get_bulk_data_manifest(data_identifier, created_since=None)
 print(f"\nManifest for {data_identifier}:")
 download_manifest_files(manifest)
 ```
@@ -98,7 +98,7 @@ download_manifest_files(manifest)
 last_ingest_time = datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S')
 print(last_ingest_time)
 
-manifest = client.data.get_alldata_manifest(data_identifier, created_since=last_ingest_time)
+manifest = client.data.get_bulk_data_manifest(data_identifier, created_since=last_ingest_time)
 
 print(f"\nManifest for {data_identifier}:")
 download_manifest_files(manifest)
