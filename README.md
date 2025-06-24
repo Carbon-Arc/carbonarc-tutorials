@@ -4,9 +4,15 @@ This repository contains code to [Carbon Arc](https://github.com/Carbon-Arc/carb
 
 ## What's in This Repository?
 
-### `getting-started`
-This directory contains the code that is explained in the Carbon Arc documentation Getting Started guides:
-* Simple setup of the Carbon Arc API Client.
+### `platform`
+This directory contains the code that is explained in the Carbon Arc documentation Platform guides:
+* Explore the platform.
+
+### `explore`
+This directory contains the code that is explained in the Carbon Arc documentation Framework guides:
+
+* Explore the platform.
+* Build a simple framework.
 
 ### `ontology`
 This directory contains the code that is explained in the Carbon Arc documentation Ontology guides:
@@ -14,20 +20,9 @@ This directory contains the code that is explained in the Carbon Arc documentati
 * Explore the insight ontology.
 * Explore the taxonomy ontology.
 
-### `platform`
-This directory contains the code that is explained in the Carbon Arc documentation Platform guides:
-* Explore the platform.
-
-### `framework`
-This directory contains the code that is explained in the Carbon Arc documentation Framework guides:
-
-* Explore the platform.
-* Build a simple framework.
-
 ### `data`
 This directory contains the code that is explained in the Carbon Arc documentation Data guides:
 
 * Explore the data.
-* Download data from the platform.
-* Download data to Remote (S3, Azure, GCP examples).
-* Upload data to the platform.
+* Download data and graphs from the platform.
+* Download data to Remote (S3 example).
