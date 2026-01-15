@@ -1,28 +1,58 @@
 # Carbon Arc Tutorials
 
-This repository contains code to [Carbon Arc](https://github.com/Carbon-Arc/carbonarc) tutorials.
+This repository contains code for [Carbon Arc](https://github.com/Carbon-Arc/carbonarc) tutorials.
+
+## Setup
+
+### 1. Install Dependencies
+
+```bash
+pip install carbonarc python-dotenv pandas boto3 pyarrow
+```
+
+### 2. Configure Environment Variables
+
+Copy the example environment file and add your credentials:
+
+```bash
+cp .env.example .env
+```
+
+Edit `.env` with your values:
+
+- **API_AUTH_TOKEN**: Get your API token from https://app.carbonarc.co/my/profile
+- **API_BASE_URL**: Use `https://api.carbonarc.co` for production
+- **AWS credentials**: Required for Bulk API access (see [Bulk Data Access](#bulk-data-access))
+
+### 3. Run Notebooks
+
+Open any notebook in Jupyter and run the cells. Each notebook loads credentials from `.env` automatically.
 
 ## What's in This Repository?
 
-### `platform`
-This directory contains the code that is explained in the Carbon Arc documentation Platform guides:
-* Explore the platform.
+### `1-platform/`
+Platform guides for getting started with Carbon Arc:
+* **account.ipynb** - Account setup and API client initialization
 
-### `explore`
-This directory contains the code that is explained in the Carbon Arc documentation Framework guides:
+### `2-explorer/`
+Framework guides for building and using the Explorer:
+* **build.ipynb** - Build and configure a framework
 
-* Explore the platform.
-* Build a simple framework.
+### `3-ontology/`
+Ontology guides for understanding the data model:
+* **entities.ipynb** - Explore entities in the ontology
+* **insights.ipynb** - Explore insights in the ontology
 
-### `ontology`
-This directory contains the code that is explained in the Carbon Arc documentation Ontology guides:
-* Explore the entity ontology.
-* Explore the insight ontology.
-* Explore the taxonomy ontology.
+### `4-data/`
+Data guides for working with bulk data:
+* **data_library.ipynb** - Explore the complete Data Library (55 datasets across 6 categories)
+* **deep_dive_bulk.ipynb** - Deep dive into bulk data exploration
+* **graph_data_local.ipynb** - Work with graph data locally
+* **bulk_data_coverage.ipynb** - Analyze dataset coverage by reading parquet files from S3
+* **bulk_data_coverage_athena.ipynb** - Analyze dataset coverage using AWS Athena for large datasets
 
-### `data`
-This directory contains the code that is explained in the Carbon Arc documentation Data guides:
+#### Bulk Data Access
 
-* Explore the data.
-* Download data and graphs from the platform.
-* Download data to Remote (S3 example).
+The `bulk_data_coverage*.ipynb` notebooks demonstrate how to analyze row-level bulk data directly from S3 buckets. This is for customers with **Bulk API** access to curated data buckets.
+
+To purchase access to bulk datasets, contact sales at **sales@carbonarc.co**.

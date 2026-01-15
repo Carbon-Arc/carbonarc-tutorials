@@ -128,7 +128,9 @@ celerybeat.pid
 *.sage.py
 
 # Environments
+dev.env
 .env
+.envrc
 .venv
 env/
 venv/
@@ -174,3 +176,6 @@ cython_debug/
 .pypirc
 /markdown
 .DS_Store
+
+# Generated files
+data_library_summary.csv
